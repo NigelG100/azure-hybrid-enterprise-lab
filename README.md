@@ -181,7 +181,13 @@ The shared virtual network and Azure Bastion deployment belong to a separate inf
 
 ## Implementation Screenshots
 
-The images below document the Microsoft Entra Cloud Sync pilot configuration and a completed provisioning cycle during lab validation. They show the configuration state at the time captured, not a guarantee of ongoing service health.
+The screenshots document the Active Directory organizational structure and point-in-time Microsoft Entra Cloud Sync pilot validation. They do not guarantee ongoing service health.
+
+### Active Directory Organizational Structure
+
+Configured a domain-based organizational unit (OU) hierarchy with separate Finance, Human Resources, IT, and Operations departments, alongside organizational units for member servers, security groups, and workstations.
+
+![Active Directory Users and Computers showing the departmental OU hierarchy and server, security group, and workstation OUs](screenshots/active-directory-ous.png)
 
 ### Cloud Sync Configuration Health
 
