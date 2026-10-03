@@ -141,6 +141,32 @@ After implementing an Azure NSG change, updated Terraform to match the deployed 
 | Automatic Cloud Sync cycle | Completed |
 | Terraform drift check | No changes |
 
+## Prerequisites and Deployment
+
+This is a **dependent lab**, not a standalone deployment. First deploy the [Secure Three-Tier Azure Infrastructure](https://github.com/NigelG100/azure-secure-infrastructure) project, which owns the existing `vnet-secure-infra` network (`10.20.0.0/16`) and Azure Bastion resources. This project creates a separate hybrid-lab resource group, adds the Windows subnet (`10.20.10.0/24`) to that existing VNet, and provisions DC01 and MEMBER01.
+
+Prerequisites:
+
+- An Azure subscription with sufficient resource permissions, and permission to use the existing VNet and Bastion resources. Running Windows VMs and Bastion may incur charges.
+- [Terraform](https://developer.hashicorp.com/terraform/install), the [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli), and PowerShell for the administrative tasks.
+- Secure values for both required, sensitive Terraform inputs: `admin_password` (DC01) and `member_admin_password` (MEMBER01). Provide these interactively or using a local ignored variable file; never publish real passwords or state files.
+- Appropriate permissions in the Microsoft Entra tenant and Windows domain to install and configure the Cloud Sync provisioning agent and perform the documented identity administration tasks.
+
+From this repository directory, select the Azure subscription hosting Project 1 and review the Terraform plan before applying:
+
+```powershell
+az login
+az account set --subscription "<subscription-id>"
+terraform init
+terraform validate
+terraform plan
+terraform apply
+```
+
+**Important:** Terraform provisions the Azure VM and networking resources; the complete identity environment also requires Windows Server administration. Configure AD DS/DNS on DC01, domain-join MEMBER01, and use the documented `scripts/` workflows to create the lab OUs, groups, fictional users, Group Policy, and pilot identity configuration. Install/configure the Entra Cloud Sync agent and verify synchronization separately. Running Terraform alone does not automatically complete those steps.
+
+**Shared-infrastructure safeguard:** Project 1 and this project use different Terraform states but share the VNet. Review `terraform plan` in **both** project directories before approving infrastructure changes, and avoid unexpected deletion or modification of the shared subnet or Bastion dependencies.
+
 ## Repository Structure
 
 - `main.tf` — Core Azure infrastructure and security resources
