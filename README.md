@@ -181,13 +181,19 @@ The shared virtual network and Azure Bastion deployment belong to a separate inf
 
 ## Implementation Screenshots
 
-The screenshots document the Active Directory organizational structure and point-in-time Microsoft Entra Cloud Sync pilot validation. They do not guarantee ongoing service health.
+The screenshots document the Active Directory organizational structure, centralized Group Policy configuration, and point-in-time Microsoft Entra Cloud Sync pilot validation. They do not guarantee ongoing service health.
 
 ### Active Directory Organizational Structure
 
 Configured a domain-based organizational unit (OU) hierarchy with separate Finance, Human Resources, IT, and Operations departments, alongside organizational units for member servers, security groups, and workstations.
 
 ![Active Directory Users and Computers showing the departmental OU hierarchy and server, security group, and workstation OUs](screenshots/active-directory-ous.png)
+
+### Group Policy Security Configuration
+
+The `LAB - Enforce Domain Firewall` Group Policy Object (GPO) is linked to the **Member Servers** organizational unit, with the link and GPO enabled. This screenshot demonstrates centralized policy configuration; application to MEMBER01 was verified separately during the lab.
+
+![Group Policy Management showing the enabled LAB - Enforce Domain Firewall GPO linked to the Member Servers OU](screenshots/firewall-gpo.png)
 
 ### Cloud Sync Configuration Health
 
