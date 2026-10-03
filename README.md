@@ -173,10 +173,27 @@ terraform apply
 - `member.tf` — Member-server infrastructure
 - `scripts/` — Active Directory, identity, and security automation
 - `data/` — Fictional employee onboarding data
+- `screenshots/` — Cropped and redacted Cloud Sync validation screenshots
 - `.gitignore` — Excludes Terraform state, local diagnostic scripts, and credential-related files
 - `.terraform.lock.hcl` — Terraform provider dependency lock file
 
 The shared virtual network and Azure Bastion deployment belong to a separate infrastructure project and are referenced or reused by this lab.
+
+## Implementation Screenshots
+
+The images below document the Microsoft Entra Cloud Sync pilot configuration and a completed provisioning cycle during lab validation. They show the configuration state at the time captured, not a guarantee of ongoing service health.
+
+### Cloud Sync Configuration Health
+
+Microsoft Entra Cloud Sync reported a **Healthy** configuration with one enabled provisioning agent. Password hash synchronization, device synchronization, and Exchange hybrid writeback were intentionally disabled in this pilot.
+
+![Microsoft Entra Cloud Sync configuration showing Healthy status and one enabled provisioning agent](screenshots/cloud-sync-healthy.png)
+
+### Provisioning Cycle and Pilot Scope
+
+The pilot provisioning view displayed **2 users** and **1 group**. The October 3, 2026 cycle completed and reported steady state, with a duration of 3.873 seconds. This is a point-in-time validation; per-object provisioning logs are needed to establish whether any individual operations failed.
+
+![Cloud Sync pilot provisioning cycle showing two users, one group, cycle completion, and steady state](screenshots/provisioning-cycle.png)
 
 ## Skills Demonstrated
 
