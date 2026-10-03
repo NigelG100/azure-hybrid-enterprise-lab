@@ -181,7 +181,13 @@ The shared virtual network and Azure Bastion deployment belong to a separate inf
 
 ## Implementation Screenshots
 
-The screenshots document the Active Directory organizational structure, centralized Group Policy configuration, and point-in-time Microsoft Entra Cloud Sync pilot validation. They do not guarantee ongoing service health.
+The screenshots document the Azure Windows VM deployment, Active Directory organizational structure, centralized Group Policy configuration, and point-in-time Microsoft Entra Cloud Sync pilot validation. They do not guarantee ongoing service health.
+
+### Azure Windows Server Infrastructure
+
+The Azure portal shows the two Windows Server virtual machines, `dc01` and `member01`, in the `rg-hybrid-lab` resource group. Both were running at the time of capture in East US, with no public IP addresses listed on the virtual machines.
+
+![Azure portal virtual machines view showing DC01 and MEMBER01 running in the hybrid lab resource group without public IP addresses](screenshots/azure-windows-vms.png)
 
 ### Active Directory Organizational Structure
 
