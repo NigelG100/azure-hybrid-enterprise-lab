@@ -1,0 +1,31 @@
+# Terraform local files and state
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+*.tfplan
+*.plan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Credentials and certificates
+.env
+.env.*
+*.pem
+*.pfx
+*.key
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Administrative recovery scripts
+reset-labadmin.ps1
+
+# Exclude diagnostic and recovery scripts in project root
+/*.ps1
